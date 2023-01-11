@@ -9,7 +9,49 @@ from jmetal.core.solution import FloatSolution
 from jmetal.core.quality_indicator import HyperVolume
 from avoidability import is_collision
 from commonroad.scenario.obstacle import DynamicObstacle, ObstacleType, Rectangle, State
+from commonroad.visualization.mp_renderer import MPRenderer
 from commonroad.common.file_reader import CommonRoadFileReader
+
+
+def generate_scenario(initial_scenario, search_result, desired_key):
+    files = sorted(glob(initial_scenario))
+    crfr = CommonRoadFileReader(files[0])
+    scenario, _ = crfr.open()
+    ego_steps = []
+    obs_steps = []
+    with open(search_result, 'r') as curr_file:
+        curr_content = json.load(curr_file)
+        for key in curr_content:
+            if key == str(desired_key):
+                ego_dimensions = [4.508, 1.61]
+                ego_positions = curr_content[key]['ego_positions']
+                ego_orientations = curr_content[key]['ego_orientations']
+                for i in range(len(ego_positions)):
+                    tmp_ego_state = State(position=ego_positions[i], orientation=ego_orientations[i], time_step=i)
+                    tmp_ego = DynamicObstacle(41, ObstacleType.CAR, Rectangle(ego_dimensions[0], ego_dimensions[1]), tmp_ego_state)
+                    ego_steps.append(tmp_ego)
+                obs_dimensions = [scenario.obstacles[0].obstacle_shape.length, scenario.obstacles[0].obstacle_shape.width]
+                obs_positions = curr_content[key]['obs_positions']
+                obs_orientations = curr_content[key]['obs_orientations']
+                for i in range(len(obs_positions)):
+                    tmp_obs_state = State(position=obs_positions[i], orientation=obs_orientations[i], time_step=i)
+                    tmp_obs = DynamicObstacle(42, ObstacleType.CAR, Rectangle(obs_dimensions[0], obs_dimensions[1]), tmp_obs_state)
+                    obs_steps.append(tmp_obs)
+    for i in range(max(len(ego_steps), len(obs_steps))):
+        rnd = MPRenderer()
+        scenario.draw(rnd, draw_params={'time_begin': i, 'dynamic_obstacle': {'draw_shape': False}, 'static_obstacle': {'draw_shape': False},
+                                        'trajectory': {'draw_trajectory': False}})
+
+        if i < len(ego_steps):
+            ego_steps[i].draw(rnd, draw_params={'time_begin': i, 'trajectory': {'draw_trajectory': False},
+                                                'dynamic_obstacle': {'vehicle_shape': {'occupancy': {
+                                                                     'shape': {'rectangle': {'facecolor': 'r'}}}}}})
+        if i < len(obs_steps):
+            obs_steps[i].draw(rnd, draw_params={'time_begin': i, 'trajectory': {'draw_trajectory': False},
+                                                'dynamic_obstacle': {'vehicle_shape': {'occupancy': {
+                                                                     'shape': {'rectangle': {'facecolor': 'b'}}}}}})
+
+        rnd.render(show=True)
 
 
 def compute_collision_timestep(file_id, reconstruction_data):
