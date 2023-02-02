@@ -1,7 +1,7 @@
 # STRETCH: Generating Challenging Scenarios for Testing Collision Avoidance Systems
 
 This repository hosts the code, results, and visualization of our appraoch to generate critical scenarios from real crash data.
-STRETCH analyzes scenarios in the [CommonRoad](https://commonroad.in.tum.de/) scenario format and generate realistic, avoidable and critical test cases that can be useful to testers and developers working on motion planning software.
+STRETCH analyzes scenarios in the [CommonRoad](https://commonroad.in.tum.de/) scenario format and generates realistic, avoidable and critical test cases that can be useful to testers and developers working on motion planning software.
 
 ### Authors
 
@@ -15,7 +15,7 @@ Collision avoidance systems are fundamental for autonomous driving and need to b
 
 Existing crash databases and accident reports describe the pre-crash, the impact, and the aftermath of observed car accidents, and enable to (re)create realistic collisions in simulations; however, because those data sources focus on the impact, their data do not generally lead avoidable collision scenarios.
 
-To address this issue, we propose \stretchAppr, an approach that generates realistic, critical, but avoidable, collision scenarios by extending focused collision descriptions using a multi-objective optimization algorithm. Thanks to \stretchAppr developers and testers can automatically generate challenging test cases based on realistic crash scenarios.
+To address this issue, we propose STRETCH, an approach that generates realistic, critical, but avoidable, collision scenarios by extending focused collision descriptions using a multi-objective optimization algorithm. Thanks to STRETCH developers and testers can automatically generate challenging test cases based on realistic crash scenarios.
 
 ## Dependencies
 
