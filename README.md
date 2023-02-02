@@ -1,27 +1,32 @@
-# STRETCH: Generating Avoidable Scenarios from Car Crash Simulations
+# STRETCH: Generating Challenging Scenarios for Testing Collision Avoidance Systems
 
-This repository hosts the Master thesis of Franz Scheuer (University of Passau, Passau, Germany).
+This repository hosts the code, results, and visualization of our appraoch to generate critical scenarios from real crash data.
+STRETCH analyzes scenarios in the [CommonRoad](https://commonroad.in.tum.de/) scenario format and generate realistic, avoidable and critical test cases that can be useful to testers and developers working on motion planning software.
 
-#### Supervisors: 
-- Prof. Dr.-Ing. Gordon Fraser (University of Passau, Passau, Germany)
-- Prof. Dr.-Ing. Christian Hammer (University of Passau, Passau, Germany)
+### Authors
 
-#### Advisors: 
+- Franz Scheuer (University of Passau, Passau, Germany)
 - Ph.D. Alessio Gambi (IMC University of Applied Sciences, Krems, Austria)
 - Ph.D. Paolo Arcaini (National Institute of Informatics, Tokyo, Japan)
 
-This project is able to analyze scenarios in the [CommonRoad](https://commonroad.in.tum.de/) scenario format. The results are used to generate realistic, avoidable and critical test cases and can be useful as feedback to testers and developers working on autonomous planning software.
+## Abstract
+
+Collision avoidance systems are fundamental for autonomous driving and need to be tested thoroughly to check whether they can safely handle critical scenarios. Testing collision avoidance systems is generally done by means of scenario-based testing using simulators and comes with the main open challenge of generating driving situations that are realistic, critical, but avoidable. In other words, driving scenarios must stress the collision avoidance functionalities while being representative.
+
+Existing crash databases and accident reports describe the pre-crash, the impact, and the aftermath of observed car accidents, and enable to (re)create realistic collisions in simulations; however, because those data sources focus on the impact, their data do not generally lead avoidable collision scenarios.
+
+To address this issue, we propose \stretchAppr, an approach that generates realistic, critical, but avoidable, collision scenarios by extending focused collision descriptions using a multi-objective optimization algorithm. Thanks to \stretchAppr developers and testers can automatically generate challenging test cases based on realistic crash scenarios.
+
+## Dependencies
 
 The implementation uses the public available [CommonRoad](https://commonroad.in.tum.de/) framework. There are multiple tutorials and instructions on how to install and setup the different modules on their website. Essential modules and their used versions are:
 - commonroad-drivability-checker  (2021.1)
 - commonroad-io  (2021.3)
 - commonroad-route-planner  (1.0.0)
 
-I tested the approach with the "Reactive-Planner" by Prof. Dr.-Ing. Matthias Althoff (althoff@tum.de) and his team from the Technical University of Munich. Due to privacy reasons their code was fully removed from this repository. To use the project, please contact them for a full version of their planner. 
-Many thanks to them for letting me use their software!
+We validated our approach using the "Reactive-Planner" kindly provided by Prof. Dr.-Ing. Matthias Althoff's group at the Technical University of Munich. Due to privacy reasons the code of the planner cannot be released in this repository. Please contact Prof. Althoff to obtain the planner. 
 
----
-#### Project Structure
+## Repository Structure
 
 **/results/**: evaluation results of the original planner\
 **/mutant/**: evaluation of the mutated (fault based) planner
