@@ -20,7 +20,8 @@ The implementation uses the public available [CommonRoad](https://commonroad.in.
 I tested the approach with the "Reactive-Planner" by Prof. Dr.-Ing. Matthias Althoff (althoff@tum.de) and his team from the Technical University of Munich. Due to privacy reasons their code was fully removed from this repository. To use the project, please contact them for a full version of their planner. 
 Many thanks to them for letting me use their software!
 
-#### Project Structure:
+---
+#### Project Structure
 
 **/results/**: evaluation results of the original planner\
 **/mutant/**: evaluation of the mutated (fault based) planner
