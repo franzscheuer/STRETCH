@@ -1,4 +1,3 @@
-
 # STRETCH: Generating Avoidable Scenarios from Car Crash Simulations
 
 This repository hosts the Master thesis of Franz Scheuer (University of Passau, Passau, Germany).
@@ -23,12 +22,12 @@ Many thanks to them for letting me use their software!
 
 #### Project Structure:
 
-**/results/**: evaluation results of the original planner
+**/results/**: evaluation results of the original planner\
 **/mutant/**: evaluation of the mutated (fault based) planner
 
 - clustered by  scenarios
 - each scenario folder is clustered by extension time
-- each scenario folder contains additional information files/pictures
+- each scenario folder contains additional information files and pictures
 
 **/GIFs/**: several visualization examples
 
