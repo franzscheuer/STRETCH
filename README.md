@@ -1,6 +1,6 @@
 # STRETCH: Generating Challenging Scenarios for Testing Collision Avoidance Systems
 
-This repository hosts the code, results, and visualization of our appraoch to generate critical scenarios from real crash data.
+This repository hosts the code, results, and visualization of our approach to generate critical scenarios from real crash data.
 STRETCH analyzes scenarios in the [CommonRoad](https://commonroad.in.tum.de/) scenario format and generates realistic, avoidable and critical test cases that can be useful to testers and developers working on motion planning software.
 
 ### Authors
@@ -13,18 +13,18 @@ STRETCH analyzes scenarios in the [CommonRoad](https://commonroad.in.tum.de/) sc
 
 Collision avoidance systems are fundamental for autonomous driving and need to be tested thoroughly to check whether they can safely handle critical scenarios. Testing collision avoidance systems is generally done by means of scenario-based testing using simulators and comes with the main open challenge of generating driving situations that are realistic, critical, but avoidable. In other words, driving scenarios must stress the collision avoidance functionalities while being representative.
 
-Existing crash databases and accident reports describe the pre-crash, the impact, and the aftermath of observed car accidents, and enable to (re)create realistic collisions in simulations; however, because those data sources focus on the impact, their data do not generally lead avoidable collision scenarios.
+Existing crash databases and accident reports describe the pre-crash, the impact, and the aftermath of observed car accidents, and enable to (re)create realistic collisions in simulations; however, because those data sources focus on the impact, their data do not generally lead to avoidable collision scenarios.
 
 To address this issue, we propose STRETCH, an approach that generates realistic, critical, but avoidable, collision scenarios by extending focused collision descriptions using a multi-objective optimization algorithm. Thanks to STRETCH developers and testers can automatically generate challenging test cases based on realistic crash scenarios.
 
 ## Dependencies
 
 The implementation uses the public available [CommonRoad](https://commonroad.in.tum.de/) framework. There are multiple tutorials and instructions on how to install and setup the different modules on their website. Essential modules and their used versions are:
-- commonroad-drivability-checker  (2021.1)
-- commonroad-io  (2021.3)
-- commonroad-route-planner  (1.0.0)
+- [commonroad-drivability-checker](https://gitlab.lrz.de/tum-cps/commonroad-drivability-checker) (2021.1)
+- [commonroad-io](https://gitlab.lrz.de/tum-cps/commonroad_io) (2021.3)
+- [commonroad-route-planner](https://gitlab.lrz.de/tum-cps/commonroad-route-planner) (1.0.0)
 
-We validated our approach using the "Reactive-Planner" kindly provided by Prof. Dr.-Ing. Matthias Althoff's group at the Technical University of Munich. Due to privacy reasons the code of the planner cannot be released in this repository. Please contact Prof. Althoff to obtain the planner. 
+We validated our approach using the "Reactive-Planner" kindly provided by Prof. Dr.-Ing. Matthias Althoff's group at the Technical University of Munich. Due to privacy reasons, the code of the planner cannot be released in this repository. Please contact Prof. Althoff to obtain the planner. 
 
 ## Repository Structure
 
